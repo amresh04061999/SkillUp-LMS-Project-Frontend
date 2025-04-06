@@ -32,23 +32,25 @@ export default function Header() {
           </Group>
           <Group><SearchBox/></Group>
           <Group visibleFrom="sm">
-          <Avatar variant="light" radius="sm"  src="" >
+          <Avatar  style={{cursor:"pointer"}} variant="light" radius="sm"  src="" >
           <IconShoppingCart stroke={2}  />
           </Avatar>
-          <Avatar variant="light" radius="sm" src="" >
+          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
           <IconHeart stroke={2} />
           </Avatar>
-          <Avatar variant="light" radius="sm" src="" >
+          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
           <IconBell stroke={2} />
           </Avatar>
-          <Avatar variant="light" radius="sm" src="" >
+          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
           <IconBrightnessUp stroke={2} />
           </Avatar>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button  variant="gradient"
+      gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}>Login</Button>
+            <Button  variant="gradient"
+      gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}>SignUp</Button>
             <Menu shadow="md" width={200}>
       <Menu.Target>
-      <Avatar variant="light" radius="sm" src="" />
+      <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" />
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Label>Application</Menu.Label>
