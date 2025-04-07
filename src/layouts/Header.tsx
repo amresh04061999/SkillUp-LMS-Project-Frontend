@@ -8,88 +8,134 @@ import {
   Image,
   Text,
   Avatar,
-  Menu
+  Menu,
+  ActionIcon,
+  useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './Header.module.css'
 import logoImage from '../assets/Image/logo.png'
-import { IconArrowsLeftRight, IconBell, IconBrightnessUp, IconMessageCircle, IconPhoto, IconSearch, IconSettings, IconShoppingCart, IconTrash } from '@tabler/icons-react'
+import {
+  IconArrowsLeftRight,
+  IconBell,
+  IconMessageCircle,
+  IconMoon,
+  IconPhoto,
+  IconSearch,
+  IconSettings,
+  IconShoppingCart,
+  IconSun,
+  IconTrash,
+} from '@tabler/icons-react'
 import { IconHeart } from '@tabler/icons-react'
 import SearchBox from '../components/SearchBox'
 export default function Header() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
-
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+  const isDark = colorScheme === 'dark'
+  const theme = useMantineTheme()
   return (
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <Group h="100%" gap={0} visibleFrom="sm">
             <Image radius="md" h={40} src={logoImage} />
-            <Text size="20px" fw={'bold'} c={'#228be6'}>
+            <Text size="20px" fw={'bold'} c={theme.primaryColor}>
               Skill-UP
             </Text>
           </Group>
-          <Group><SearchBox/></Group>
+          <Group>
+            <SearchBox />
+          </Group>
           <Group visibleFrom="sm">
-          <Avatar  style={{cursor:"pointer"}} variant="light" radius="sm"  src="" >
-          <IconShoppingCart stroke={2}  />
-          </Avatar>
-          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
-          <IconHeart stroke={2} />
-          </Avatar>
-          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
-          <IconBell stroke={2} />
-          </Avatar>
-          <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" >
-          <IconBrightnessUp stroke={2} />
-          </Avatar>
-            <Button  variant="gradient"
-      gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}>Login</Button>
-            <Button  variant="gradient"
-      gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}>SignUp</Button>
+            <Avatar
+              style={{ cursor: 'pointer' }}
+              variant="light"
+              radius="sm"
+              src=""
+            >
+              <IconShoppingCart stroke={2} />
+            </Avatar>
+            <Avatar
+              style={{ cursor: 'pointer' }}
+              variant="light"
+              radius="sm"
+              src=""
+            >
+              <IconHeart stroke={2} />
+            </Avatar>
+            <Avatar
+              style={{ cursor: 'pointer' }}
+              variant="light"
+              radius="sm"
+              src=""
+            >
+              <IconBell stroke={2} />
+            </Avatar>
+            <Avatar
+              style={{ cursor: 'pointer' }}
+              variant="light"
+              radius="sm"
+              src=""
+            >
+              <Group p="md">
+                <ActionIcon onClick={toggleColorScheme}>
+                  {isDark ? <IconSun size={20} /> : <IconMoon size={20} />}
+                </ActionIcon>
+              </Group>
+            </Avatar>
+            <Button
+              variant="gradient"
+              gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}
+            >
+              Login
+            </Button>
+            <Button
+              variant="gradient"
+              gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}
+            >
+              SignUp
+            </Button>
             <Menu shadow="md" width={200}>
-      <Menu.Target>
-      <Avatar style={{cursor:"pointer"}} variant="light" radius="sm" src="" />
-      </Menu.Target>
-      <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item leftSection={<IconSettings size={14} />}>
-          Settings
-        </Menu.Item>
-        <Menu.Item leftSection={<IconMessageCircle size={14} />}>
-          Messages
-        </Menu.Item>
-        <Menu.Item leftSection={<IconPhoto size={14} />}>
-          Gallery
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<IconSearch size={14} />}
-          rightSection={
-            <Text size="xs" c="dimmed">
-              ⌘K
-            </Text>
-          }
-        >
-          Search
-        </Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item
-          leftSection={<IconArrowsLeftRight size={14} />}
-        >
-          Transfer my data
-        </Menu.Item>
-        <Menu.Item
-          color="red"
-          leftSection={<IconTrash size={14} />}
-        >
-          Delete my account
-        </Menu.Item>
-      </Menu.Dropdown>
-    </Menu>
+              <Menu.Target>
+                <Avatar
+                  style={{ cursor: 'pointer' }}
+                  variant="light"
+                  radius="sm"
+                  src=""
+                />
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Label>Application</Menu.Label>
+                <Menu.Item leftSection={<IconSettings size={14} />}>
+                  Settings
+                </Menu.Item>
+                <Menu.Item leftSection={<IconMessageCircle size={14} />}>
+                  Messages
+                </Menu.Item>
+                <Menu.Item leftSection={<IconPhoto size={14} />}>
+                  Gallery
+                </Menu.Item>
+                <Menu.Item
+                  leftSection={<IconSearch size={14} />}
+                  rightSection={
+                    <Text size="xs" c="dimmed">
+                      ⌘K
+                    </Text>}  >
+                  Search
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Label>Danger zone</Menu.Label>
+                <Menu.Item leftSection={<IconArrowsLeftRight size={14} />}>
+                  Transfer my data
+                </Menu.Item>
+                <Menu.Item color="red" leftSection={<IconTrash size={14} />}>
+                  Delete my account
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
           </Group>
           <Burger
             opened={drawerOpened}
