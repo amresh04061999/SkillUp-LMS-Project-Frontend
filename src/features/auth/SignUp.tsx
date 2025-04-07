@@ -31,8 +31,8 @@ export const SignUp = () => {
       }
     };
   return (
-    <Flex justify={'center'} align={'center'} bg={'#f6f7f9'} h={'100%'}  style={{ overflowY: 'hidden' }}>
-      <Box w={600}  bg={'white'} p={20} h={"550px"} style={{ overflowY: 'auto' }}>
+    <Flex justify={'center'} align={'center'}  h={'100%'}  style={{ overflowY: 'hidden' }}>
+      <Box w={600}   p={20} h={"550px"} style={{ overflowY: 'auto',border:"2px solid gray" }}>
         <Text size="20px" fw={'bold'} py={10}>
           Create an account
         </Text>
