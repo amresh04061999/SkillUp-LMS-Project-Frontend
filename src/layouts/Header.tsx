@@ -30,12 +30,14 @@ import {
 } from '@tabler/icons-react'
 import { IconHeart } from '@tabler/icons-react'
 import SearchBox from '../components/SearchBox'
+import { useNavigate } from 'react-router-dom'
 export default function Header() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   const isDark = colorScheme === 'dark'
   const theme = useMantineTheme()
+  const navigate = useNavigate()
   return (
     <Box>
       <header className={classes.header}>
@@ -89,12 +91,14 @@ export default function Header() {
             <Button
               variant="gradient"
               gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}
+              onClick={() => navigate('/login')}
             >
               Login
             </Button>
             <Button
               variant="gradient"
               gradient={{ from: 'indigo', to: 'cyan', deg: 222 }}
+              onClick={() => navigate('/signUp')}
             >
               SignUp
             </Button>
@@ -123,7 +127,9 @@ export default function Header() {
                   rightSection={
                     <Text size="xs" c="dimmed">
                       ⌘K
-                    </Text>}  >
+                    </Text>
+                  }
+                >
                   Search
                 </Menu.Item>
                 <Menu.Divider />
@@ -156,8 +162,10 @@ export default function Header() {
       >
         <ScrollArea h="calc(100vh - 80px" mx="-md">
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="default" onClick={() => navigate('/login')}>
+              Log in
+            </Button>
+            <Button onClick={() => navigate('/signUp')}>Sign up</Button>
           </Group>
         </ScrollArea>
       </Drawer>

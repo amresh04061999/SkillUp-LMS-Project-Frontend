@@ -1,18 +1,21 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
-import App from './App.tsx'
 import '@mantine/core/styles.css'
 import { MantineProvider } from '@mantine/core'
 import { myTheme } from './styles/Theme.ts'
-// eslint-disable-next-line react-refresh/only-export-components
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import { router } from './routers/router.tsx'
+
 function Main() {
+  // eslint-disable-next-line react-refresh/only-export-components
   return (
     <>
       <StrictMode>
         <MantineProvider defaultColorScheme="dark" theme={myTheme}>
-          <App />
+        <RouterProvider router={router} />
         </MantineProvider>
+        
       </StrictMode>
       ,
     </>
