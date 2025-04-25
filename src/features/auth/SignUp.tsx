@@ -13,6 +13,7 @@ import {
 } from '@mantine/core'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const SignUp = () => {
     const fileInputRef = useRef<HTMLInputElement>(null); // Correct type
@@ -38,7 +39,7 @@ export const SignUp = () => {
         </Text>
         <Group>
             <Box component='label'>
-           Already have an account ? <Anchor>SignIn</Anchor>
+           Already have an account ?  <Link to={"/login"}><Anchor>SignIn</Anchor></Link>
            </Box>
             </Group>
             <Group py={20}>

@@ -1,5 +1,6 @@
 import { Anchor, Box, Button, Flex, Grid, Input, Text } from '@mantine/core'
 import { IconBrandGoogle } from '@tabler/icons-react'
+import { Link } from 'react-router-dom'
 export const SignIn = () => {
   return (
     <>
@@ -44,7 +45,7 @@ export const SignIn = () => {
               <Flex justify={'center'}>
                 <Box component="label">Don't have an account? </Box>
                 <Box component="label" ps={5}>
-                  <Anchor> SignUp</Anchor>
+               <Link to={"/signUp"}> <Anchor > SignUp</Anchor></Link>
                 </Box>
               </Flex>
             </Grid.Col>
